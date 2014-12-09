@@ -1,0 +1,25 @@
+{
+  "name": "pendulum",
+  "version": "1.0.0",
+  "description": "A mesmerizing pendulum spinner for your users to watch while they're hanging",
+  "main": "pendulum.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dutzi/pendulum.git"
+  },
+  "keywords": [
+    "spinner",
+    "pendulum",
+    "javascript",
+    "js"
+  ],
+  "author": "dutzi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dutzi/pendulum/issues"
+  },
+  "homepage": "https://github.com/dutzi/pendulum"
+}
