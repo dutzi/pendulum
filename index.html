@@ -67,7 +67,7 @@ pre .vip {
 	<div class="logo">pendulum<span>js</span></div>
 	<div class="canvas-container"></div>
 <pre>
-<span class="vip">pendulum</span> = new <strong>Pendulum</strong>({
+var <span class="vip">pendulum</span> = new <strong>Pendulum</strong>({
     <span class="pip">numBalls</span>    : 40,
     <span class="pip">ballHeight</span>  : 40,
     <span class="pip">ballRadius</span>  : 5,
@@ -99,33 +99,7 @@ var $pre = document.querySelector('pre');
 $pre.innerHTML = $pre.innerHTML.replace('{{color0}}', colors[0]);
 $pre.innerHTML = $pre.innerHTML.replace('{{color1}}', colors[1]);
 
-function between(min, max, floor) {
-	var num = Math.random() * (max - min) + max;
-	return (floor)?Math.floor(num):num;
-}
-
-var pendulum;
-
-// pendulum = new Pendulum({
-// 	color1: '#000000',
-// 	color2: '#ffffff',
-// 	numBalls: 30,
-// 	fadeout: 1
-// });
-// document.querySelector('body').appendChild(pendulum.canvas);
-
-// pendulum = new Pendulum({
-// 	color2: '#ffff00',
-// 	color1: '#ff00ff',
-// 	ballRadius: 5,
-// 	numBalls: 3,
-// 	ballHeight: 100,
-// 	fadeout: 1
-// });
-
-// document.querySelector('body').appendChild(pendulum.canvas);
-
-pendulum = new Pendulum({
+var pendulum = new Pendulum({
 	numBalls	: 40,
 	ballHeight	: 40,
 	ballRadius	: 5,
