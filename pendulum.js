@@ -1,4 +1,10 @@
 function Pendulum(options) {
+	var ieOption = 'dontDisplayHorrendousMessageBoxOnIE8EvenThoughItsAShitty' + 
+		'BrowserNobodyShouldNeverEverUse';
+	if (navigator.userAgent.match(/MSIE 8/i) && options[ieOption] !== true) {
+		alert('Please consider upgrading your browser. It\'s really old.');
+	}
+
 	this.options		= options;
 	this.canvas			= document.createElement('canvas');
 	this.fromColor		= this.parseColor(options.color1);
@@ -24,12 +30,6 @@ function Pendulum(options) {
 	this.context.scale(pixelRatio, pixelRatio);
 
 	this.play();
-
-	var ieOption = 'dontDisplayHorrendousMessageBoxOnIE8EvenThoughItsAShitty' + 
-		'BrowserNobodyShouldNeverEverUse';
-	if (navigator.userAgent.match(/MSIE 8/i) && options[ieOption] !== true) {
-		alert('Please consider upgrading your browser. It\'s really old.');
-	}
 }
 
 Pendulum.prototype.play = function() {
