@@ -98,9 +98,9 @@ Pendulum.prototype.tick = function () {
 			(this.options.ballHeight / 2);
 
 		this.context.fillStyle = 'rgb(' + 
-			Math.trunc(this.fromColor.r + this.diffR * brightness) + ',' +
-			Math.trunc(this.fromColor.g + this.diffG * brightness) + ',' +
-			Math.trunc(this.fromColor.b + this.diffB * brightness) +
+			Math.floor(this.fromColor.r + this.diffR * brightness) + ',' +
+			Math.floor(this.fromColor.g + this.diffG * brightness) + ',' +
+			Math.floor(this.fromColor.b + this.diffB * brightness) +
 		')';
 
 		this.context.beginPath();
