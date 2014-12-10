@@ -10,8 +10,6 @@ The chaotic-yet-patterny effect created by attaching 20 pendulums together is no
 
 > * Pretty and nice!
 
-Pendulum is a pretty customizable pendulum-based spinner.
-
 #### Installing
 
 ```
