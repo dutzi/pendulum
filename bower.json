@@ -8,14 +8,11 @@
   ],
   "description": "A mesmerizing effect for your users to experience while waiting for your shitty website to load. also, highly customizable.",
   "moduleType": [
-    "globals",
     "node"
   ],
   "keywords": [
     "spinner",
-    "pendulum",
-    "javascript",
-    "js"
+    "pendulum"
   ],
   "license": "MIT",
   "ignore": [
