@@ -5,7 +5,7 @@ function Pendulum(options) {
 	if (navigator.userAgent.match(/MSIE 8/i) && options[ieOption] !== true) {
 		alert('Please consider upgrading your browser. It\'s really old.');
 	}
-
+	
 	this.options		= options;
 	this.canvas			= document.createElement('canvas');
 	this.fromColor		= this.parseColor(options.color1);
@@ -21,7 +21,7 @@ function Pendulum(options) {
 		width	= (options.ballRadius * 2 + 1) * options.numBalls +
 				 options.ballRadius;
 
-	var pixelRatio = window.devicePixelRatio;
+	var pixelRatio = window.devicePixelRatio || 1;
 	this.canvas.width			= width * pixelRatio;
 	this.canvas.height			= height * pixelRatio;
 	this.canvas.style.width		= width;
