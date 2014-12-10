@@ -82,7 +82,8 @@ Pendulum.prototype.getCanvas = function() {
 };
 
 Pendulum.prototype.getY = function (i, t) {
-	return this.options.ballHeight/2 * (1 + Math.sin((this.timeStep * (i/500 + 0.02)) % 2*Math.PI));
+	return this.options.ballHeight/2 *
+		   (1 + Math.sin((this.timeStep * (i/500 + 0.02)) % 2*Math.PI));
 };
 
 Pendulum.prototype.tick = function () {
