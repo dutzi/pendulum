@@ -15,7 +15,7 @@ function Pendulum(options) {
 		width	= (options.ballRadius * 2 + 1) * options.numBalls +
 				 options.ballRadius;
 
-	var pixelRatio = window.devicePixelRatio || 1;
+	var pixelRatio = window.devicePixelRatio;
 	this.canvas.width			= width * pixelRatio;
 	this.canvas.height			= height * pixelRatio;
 	this.canvas.style.width		= width;
@@ -25,6 +25,12 @@ function Pendulum(options) {
 	this.context.scale(pixelRatio, pixelRatio);
 
 	this.play();
+
+	var ieOption = 'dontDisplayHorrendousMessageBoxOnIE8EvenThoughItsAShitty' + 
+		'BrowserNobodyShouldNeverEverUse';
+	if (navigator.userAgent.match(/MSIE 8/i) && options[ieOption] !== true) {
+		alert('Please consider upgrading your browser. It\'s really old.');
+	}
 }
 
 Pendulum.prototype.play = function() {
@@ -98,9 +104,9 @@ Pendulum.prototype.tick = function () {
 			(this.options.ballHeight / 2);
 
 		this.context.fillStyle = 'rgb(' + 
-			Math.floor(this.fromColor.r + this.diffR * brightness) + ',' +
-			Math.floor(this.fromColor.g + this.diffG * brightness) + ',' +
-			Math.floor(this.fromColor.b + this.diffB * brightness) +
+			Math.trunc(this.fromColor.r + this.diffR * brightness) + ',' +
+			Math.trunc(this.fromColor.g + this.diffG * brightness) + ',' +
+			Math.trunc(this.fromColor.b + this.diffB * brightness) +
 		')';
 
 		this.context.beginPath();
