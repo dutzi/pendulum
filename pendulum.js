@@ -1,8 +1,8 @@
 function Pendulum(options) {
 	this.options		= options;
 	this.canvas			= document.createElement('canvas');
-	this.fromColor		= this.parseColor(options.color2);
-	this.toColor		= this.parseColor(options.color1);
+	this.fromColor		= this.parseColor(options.color1);
+	this.toColor		= this.parseColor(options.color0);
 	this.timeStep		= 0;
 	this.context		= this.canvas.getContext('2d');
 	this.diffR			= this.toColor.r - this.fromColor.r;
@@ -10,32 +10,63 @@ function Pendulum(options) {
 	this.diffB			= this.toColor.b - this.fromColor.b;
 	this.clearFillStyle	= 'rgba(255,255,255,' + (this.options.fadeout) + ')';
 
-	this.canvas.height	= options.ballHeight + options.ballRadius * 4;
-	this.canvas.width	= (options.ballRadius * 2 + 1) * options.numBalls +
-						  options.ballRadius;
+	var height	= options.ballHeight + options.ballRadius * 4,
+		width	= (options.ballRadius * 2 + 1) * options.numBalls +
+				 options.ballRadius;
 
-	this.context.strokeStyle = 'rgba(0,0,0,0)';
+	var pixelRatio = window.devicePixelRatio;
+	this.canvas.width			= width * pixelRatio;
+	this.canvas.height			= height * pixelRatio;
+	this.canvas.style.width		= width;
+	this.canvas.style.height	= height;
+
+	this.context.strokeStyle = 'rgba(0, 0, 0, 0)';
+	this.context.scale(pixelRatio, pixelRatio);
 
 	this.play();
 }
 
 Pendulum.prototype.play = function() {
+	if (this.interval) return;
+
+	this.tick();
 	this.interval = setInterval(this.tick.bind(this), 16);
 };
 
 Pendulum.prototype.pause = function() {
 	clearInterval(this.interval);
+	this.interval = null;
 };
 
-Pendulum.prototype.parseColor = function(hexColor) {
-	if (hexColor.substr(0, 1) === '#') {
-		hexColor = hexColor.substr(1);
+Pendulum.prototype.clear = function(num) {
+	this.context.fillStyle = 'rgba(255,255,255,1)';
+	this.context.globalCompositeOperation = 'destination-out';
+	this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
+};
+
+Pendulum.prototype.step = function(num) {
+	this.clear();
+	this.timeStep = num;
+	this.tick();
+};
+
+Pendulum.prototype.parseColor = function(color) {
+	if (typeof color === 'number') {
+		return {
+			r: Math.floor(color / 256 / 256) % 256,
+			g: Math.floor(color / 256) % 256,
+			b: color % 256
+		};
+	} else {
+		if (color.substr(0, 1) === '#') {
+			color = color.substr(1);
+		}
+		return {
+			r: parseInt(color.substr(0, 2), 16),
+			g: parseInt(color.substr(2, 2), 16),
+			b: parseInt(color.substr(4, 2), 16)
+		};
 	}
-	return {
-		r: parseInt(hexColor.substr(0, 2), 16),
-		g: parseInt(hexColor.substr(2, 2), 16),
-		b: parseInt(hexColor.substr(4, 2), 16)
-	};
 };
 
 Pendulum.prototype.getCanvas = function() {
@@ -44,7 +75,7 @@ Pendulum.prototype.getCanvas = function() {
 
 Pendulum.prototype.getY = function (i, t) {
 	return this.options.ballHeight/2 *
-		   (1 + Math.sin((this.timeStep * (i/500 + 0.01)) % 2*Math.PI));
+		   (1 + Math.sin((this.timeStep * (i/500 + 0.02)) % 2*Math.PI));
 };
 
 Pendulum.prototype.tick = function () {
@@ -88,18 +119,18 @@ module.exports = function (options) {
 		numBalls	: 40,
 		ballHeight	: 40,
 		ballRadius	: 2,
+		color0		: '#000000',
 		color1		: '#000000',
-		color2		: '#000000',
 		fadeout		: 0.2
 	};
 
 	for (var key in options) defaults[key] = options[key];
 
 	var pendulum = new Pendulum(defaults);
-
 	return {
 		canvas	: pendulum.getCanvas(),
-		pause	: pendulum.pause(),
-		play	: pendulum.play()
+		play	: pendulum.play.bind(pendulum),
+		pause	: pendulum.pause.bind(pendulum),
+		step	: pendulum.step.bind(pendulum)
 	};
 };
