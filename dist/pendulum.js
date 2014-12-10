@@ -24,8 +24,8 @@ function Pendulum(options) {
 	var pixelRatio = window.devicePixelRatio || 1;
 	this.canvas.width			= width * pixelRatio;
 	this.canvas.height			= height * pixelRatio;
-	this.canvas.style.width		= width;
-	this.canvas.style.height	= height;
+	this.canvas.style.width		= width + 'px';
+	this.canvas.style.height	= height + 'px';
 
 	this.context.strokeStyle = 'rgba(0, 0, 0, 0)';
 	this.context.scale(pixelRatio, pixelRatio);
