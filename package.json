@@ -1,5 +1,5 @@
 {
-  "name": "pendulum",
+  "name": "pendulumjs",
   "version": "1.0.0",
   "description": "A mesmerizing pendulum spinner for your users to watch while they're hanging",
   "main": "pendulum.js",
