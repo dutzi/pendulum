@@ -45,3 +45,7 @@ Based on a a [post I saw on reddit](http://www.reddit.com/r/gifs/comments/2on8si
 #### Support
 
 Pendulum doesn't and will never ever support IE8. In fact, when running on IE8, Pendulum will display a message box asking the user to upgrade his browser. (This can be controlled by setting the `dontDisplayHorrendousMessageBoxOnIE8EvenThoughItsAShittyBrowserNobodyShouldNeverEverUse` to true.)
+
+#### License
+
+MIT
