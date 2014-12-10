@@ -18,17 +18,19 @@ body {
 	font-family: 'Fugaz One';
 	padding: 70px 0px 20px;
 	color: #FF00FF;
-	/*color: rgb(248, 6, 255);*/
 }
 
 .logo span {
 	color: #00ffff;
-	/*color: rgb(82, 225, 255);*/
 }
 
 .canvas-container {
 	display: block;
 	margin-top: 100px;
+	margin-bottom: 80px;
+}
+
+canvas {
 	margin-bottom: 80px;
 }
 
@@ -43,7 +45,7 @@ pre {
 	border-radius: 5px;
 	background: #fafafa;
 	text-align: left;
-	margin-bottom: 40px;
+	margin-bottom: 120px;
 }
 
 pre .pip {
@@ -56,8 +58,13 @@ pre .vip {
 }
 
 .github-logo {
+	margin: -40px 0px 40px;
 	opacity: 0.2;
 	width: 40px;
+}
+
+#codeTemplate {
+	display: none;
 }
 
 </style>
@@ -66,14 +73,15 @@ pre .vip {
 <body>
 	<div class="logo">pendulum<span>js</span></div>
 	<div class="canvas-container"></div>
-<pre>
-var <span class="vip">pendulum</span> = new <strong>Pendulum</strong>({
-    <span class="pip">numBalls</span>    : 40,
-    <span class="pip">ballHeight</span>  : 40,
-    <span class="pip">ballRadius</span>  : 5,
+
+<pre id="codeTemplate">
+<span class="vip">pendulum</span> = new <strong>Pendulum</strong>({
+    <span class="pip">numBalls</span>    : {{numBalls}},
+    <span class="pip">ballHeight</span>  : {{ballHeight}},
+    <span class="pip">ballRadius</span>  : {{ballRadius}},
     <span class="pip">color0</span>      : '{{color0}}',
     <span class="pip">color1</span>      : '{{color1}}',
-    <span class="pip">fadeout</span>     : 1.0
+    <span class="pip">fadeout</span>     : {{fadeout}}
 });
 document.querySelector('body').appendChild(<span class="vip">pendulum.canvas</span>);
 </pre>
@@ -87,7 +95,6 @@ document.querySelector('body').appendChild(<span class="vip">pendulum.canvas</sp
 
 var colors = [
 	['#FFFC00', '#00FFFF'],
-	['#06FF00', '#000000'],
 	['#00D8FF', '#FF8800'],
 	['#00FFFF', '#FF00FF']
 ];
@@ -99,7 +106,25 @@ var $pre = document.querySelector('pre');
 $pre.innerHTML = $pre.innerHTML.replace('{{color0}}', colors[0]);
 $pre.innerHTML = $pre.innerHTML.replace('{{color1}}', colors[1]);
 
-var pendulum = new Pendulum({
+function createPendulum(options) {
+	var pendulum = new Pendulum(options);
+	var codePre = document.querySelector('#codeTemplate').cloneNode(true);
+	codePre.id = '';
+	codePre.innerHTML = codePre.innerHTML
+		.replace('{{numBalls}}'		, options.numBalls)
+		.replace('{{ballHeight}}'	, options.ballHeight)
+		.replace('{{ballRadius}}'	, options.ballRadius)
+		.replace('{{color0}}'		, options.color0)
+		.replace('{{color1}}'		, options.color1)
+		.replace('{{fadeout}}'		, options.fadeout);
+
+	document.querySelector('.canvas-container').appendChild(pendulum.canvas);
+	document.querySelector('.canvas-container').appendChild(codePre);
+
+	return pendulum.canvas;
+}
+
+createPendulum({
 	numBalls	: 40,
 	ballHeight	: 40,
 	ballRadius	: 5,
@@ -107,7 +132,27 @@ var pendulum = new Pendulum({
 	color1		: colors[1],
 	fadeout		: 1.0
 });
-document.querySelector('.canvas-container').appendChild(pendulum.canvas);
+
+createPendulum({
+	numBalls	: 40,
+	ballHeight	: 40,
+	ballRadius	: 2,
+	color0		: '#000000',
+	color1		: '#000000',
+	fadeout		: 0.6
+});
+
+var canvas = createPendulum({
+	numBalls	: 100,
+	ballHeight	: 20,
+	ballRadius	: 1,
+	color0		: '#00FF00',
+	color1		: '#00FF00',
+	fadeout		: 0.6
+});
+
+canvas.style.padding = '10px';
+canvas.style.background = 'black';
 
 </script>
 
