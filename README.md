@@ -12,10 +12,10 @@ The chaotic-yet-patterny effect created by attaching 20 pendulums together is no
 
 Pendulum is a pretty customizable pendulum-based spinner.
 
-## Credits
+#### Credits
 
 Based on a a [post I saw on reddit](http://www.reddit.com/r/gifs/comments/2on8si/connecting_to_server_so_mesmerizing/) (specifically, on [this guy's comment](http://www.reddit.com/r/gifs/comments/2on8si/connecting_to_server_so_mesmerizing/cmow0sz))
 
-## Support
+#### Support
 
 Pendulum doesn't and will never ever support IE8. In fact, when running on IE8, Pendulum will display a message box asking the user to upgrade his browser. (This can be controlled by setting the `dontDisplayHorrendousMessageBoxOnIE8EvenThoughItsAShittyBrowserNobodyShouldNeverEverUse` to true.)
