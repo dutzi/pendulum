@@ -4,9 +4,9 @@
   "version": "1.0.0",
   "homepage": "https://github.com/dutzi/pendulum",
   "authors": [
-    "Eldad Bercovici <dutzi.b@gmail.com>"
+    "dutzi <dutzi.b@gmail.com>"
   ],
-  "description": "A mesmerizing effect for your users to experience while waiting for your shitty website to load. also, highly customizable.",
+  "description": "A mesmerizing pendulum spinner for your users to watch while they're hanging",
   "moduleType": [
     "node"
   ],
