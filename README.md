@@ -12,6 +12,32 @@ The chaotic-yet-patterny effect created by attaching 20 pendulums together is no
 
 Pendulum is a pretty customizable pendulum-based spinner.
 
+#### Installing
+
+```
+npm install pendulumjs
+```
+
+#### Usage
+
+```javascript
+pendulum = new Pendulum({
+    numBalls    : 40,           // # balls (>0)
+    ballHeight  : 40,           // Canvas height (>0)
+    ballRadius  : 5,            // Ball's radius (>0)
+    color0      : '#FFFFFF',    // Ball's color when far from center (string)
+    color1      : '#000000',    // Ball's color when close to center (string)
+    fadeout     : 1.0           // Ball's fadeout speed (0.0 - 1.0)
+});
+document.querySelector('body').appendChild(pendulum.canvas);
+```
+
+##### Methods
+
+* `play()` - Start animation
+* `pause()` - Pause animation
+* `step(num)` - Go to frame # num
+
 #### Credits
 
 Based on a a [post I saw on reddit](http://www.reddit.com/r/gifs/comments/2on8si/connecting_to_server_so_mesmerizing/) (specifically, on [this guy's comment](http://www.reddit.com/r/gifs/comments/2on8si/connecting_to_server_so_mesmerizing/cmow0sz))
