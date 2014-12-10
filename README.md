@@ -2,7 +2,7 @@ There are three things in life that people like to stare at: a flowing stream, a
 
 The chaotic-yet-patterny effect created by attaching 20 pendulums together is now available for you to embed using a single line of code!
 
-[Demo here](dutzi.github.io/pendulum)
+[Demo here](//dutzi.github.io/pendulum)
 
 > * Highly customizable!
 
