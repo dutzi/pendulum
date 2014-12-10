@@ -18,6 +18,8 @@ Pendulum is a pretty customizable pendulum-based spinner.
 npm install pendulumjs
 ```
 
+Or download the [minified package](https://github.com/dutzi/pendulum/blob/master/dist/pendulum.min.js) and add a a &lt;script&gt; tag that points to it.
+
 #### Usage
 
 ```javascript
