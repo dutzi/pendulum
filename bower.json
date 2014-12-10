@@ -1,0 +1,28 @@
+{
+  "name": "pendulumjs",
+  "main": "pendulum.js",
+  "version": "1.0.0",
+  "homepage": "https://github.com/dutzi/pendulum",
+  "authors": [
+    "Eldad Bercovici <dutzi.b@gmail.com>"
+  ],
+  "description": "A mesmerizing effect for your users to experience while waiting for your shitty website to load. also, highly customizable.",
+  "moduleType": [
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "spinner",
+    "pendulum",
+    "javascript",
+    "js"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
