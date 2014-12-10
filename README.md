@@ -21,7 +21,7 @@ Or download the [minified package](https://github.com/dutzi/pendulum/blob/master
 #### Usage
 
 ```javascript
-pendulum = new Pendulum({
+var pendulum = new Pendulum({
     numBalls    : 40,           // # balls (>0)
     ballHeight  : 40,           // Canvas height (>0)
     ballRadius  : 5,            // Ball's radius (>0)
