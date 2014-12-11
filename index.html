@@ -102,9 +102,6 @@ colors = colors[Math.floor(Math.random() * colors.length)];
 
 document.querySelector('.logo').style.color = colors[1];
 document.querySelector('.logo span').style.color = colors[0];
-var $pre = document.querySelector('pre');
-$pre.innerHTML = $pre.innerHTML.replace('{{color0}}', colors[0]);
-$pre.innerHTML = $pre.innerHTML.replace('{{color1}}', colors[1]);
 
 function createPendulum(options) {
 	var pendulum = new Pendulum(options);
